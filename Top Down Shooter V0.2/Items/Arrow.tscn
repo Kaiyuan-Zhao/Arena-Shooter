@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Items/Projectile.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Texture Dump/Arrow.png" type="Texture" id=3]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 2.0
+height = 14.0
+
+[node name="Arrow" instance=ExtResource( 1 )]
+texture = ExtResource( 3 )
+offset = Vector2( 0.5, 1 )
+
+[node name="Hitbox" parent="." index="0"]
+damage = 20
+knockback = 15.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 1 )
+
+[editable path="Hitbox"]
