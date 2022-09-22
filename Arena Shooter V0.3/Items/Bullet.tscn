@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Texture Dump/Bullet.png" type="Texture" id=1]
+[ext_resource path="res://Items/Projectile.tscn" type="PackedScene" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 1, 4 )
+
+[node name="Bullet" instance=ExtResource( 2 )]
+texture = ExtResource( 1 )
+speed = 750
+
+[node name="Hitbox" parent="." index="0"]
+damage = 800
+knockback = 3.0
+
+[node name="CollisionShape2D" parent="Hitbox" index="0"]
+shape = SubResource( 1 )
+
+[node name="CollisionShape2D" parent="Hitbox2" index="0"]
+shape = SubResource( 1 )
+
+[editable path="Hitbox"]
+[editable path="Hitbox2"]

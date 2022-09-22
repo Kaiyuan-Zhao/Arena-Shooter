@@ -1,0 +1,16 @@
+extends Node2D
+
+export(int) var WANDER_TARGET_RANGE = 4
+export(int) var level = 1
+export(Resource) var weapon = null
+
+onready var body = $Body
+onready var label = $Position2D/Control/Level
+
+func _ready():
+	if weapon != null:
+		body.weaponScene = weapon
+	body.label = label
+	body.WANDER_TARGET_RANGE = WANDER_TARGET_RANGE
+	body.level = level
+	
