@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://droppedItems/droppedItem.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Texture Dump/Rifle.png" type="Texture" id=3]
+[ext_resource path="res://Items/Rifle.tscn" type="PackedScene" id=4]
+
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 7.0
+height = 16.0
+
+[node name="droppedRifle" instance=ExtResource( 1 )]
+pickedUpWeapon = ExtResource( 4 )
+
+[node name="Sprite" parent="." index="0"]
+position = Vector2( 0, 20 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" parent="Area2D" index="0"]
+position = Vector2( 0, 20 )
+shape = SubResource( 1 )

@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Texture Dump/abilityTimerUnder.png" type="Texture" id=1]
+[ext_resource path="res://Texture Dump/abilityTimerProgress.png" type="Texture" id=2]
+[ext_resource path="res://Texture Dump/panel.png" type="Texture" id=3]
+[ext_resource path="res://Texture Dump/dash.png" type="Texture" id=4]
+[ext_resource path="res://UI/AbilityUI.gd" type="Script" id=5]
+
+[node name="AbilityUI" type="Control"]
+self_modulate = Color( 1.1, 1.1, 1.1, 1 )
+anchor_right = 0.4
+anchor_bottom = 0.178
+margin_bottom = -56.08
+script = ExtResource( 5 )
+
+[node name="TimeBar" type="TextureProgress" parent="."]
+margin_left = 32.0
+margin_top = 40.0
+margin_right = 224.0
+margin_bottom = 48.0
+step = 0.01
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 1 )
+
+[node name="AbilityIcon" type="TextureRect" parent="."]
+modulate = Color( 0.8, 0.8, 0.8, 1 )
+margin_left = 560.0
+margin_top = 280.0
+margin_right = 624.0
+margin_bottom = 344.0
+texture = ExtResource( 3 )
+
+[node name="Icon" type="TextureRect" parent="AbilityIcon"]
+margin_right = 64.0
+margin_bottom = 64.0
+texture = ExtResource( 4 )
+stretch_mode = 4
+
+[node name="CooldownBar" type="TextureProgress" parent="."]
+modulate = Color( 0, 0, 0, 0.5 )
+margin_left = 560.0
+margin_top = 280.0
+margin_right = 624.0
+margin_bottom = 344.0
+step = 0.01
+texture_progress = ExtResource( 3 )
+fill_mode = 3
