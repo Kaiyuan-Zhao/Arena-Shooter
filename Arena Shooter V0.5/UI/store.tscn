@@ -1,0 +1,246 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Font.tres" type="DynamicFont" id=1]
+[ext_resource path="res://Texture Dump/Heart.png" type="Texture" id=2]
+[ext_resource path="res://store.tres" type="Theme" id=3]
+[ext_resource path="res://Pixels.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://UI/shopTab.gd" type="Script" id=5]
+[ext_resource path="res://UI/store.gd" type="Script" id=6]
+[ext_resource path="res://UI/shopItemPanel.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Texture Dump/speed.png" type="Texture" id=8]
+[ext_resource path="res://Texture Dump/dash.png" type="Texture" id=9]
+[ext_resource path="res://Texture Dump/regeneration.png" type="Texture" id=10]
+[ext_resource path="res://Texture Dump/weaponEnlargement.png" type="Texture" id=11]
+[ext_resource path="res://UI/WeaponTab.gd" type="Script" id=12]
+[ext_resource path="res://Texture Dump/multishot.png" type="Texture" id=13]
+[ext_resource path="res://Texture Dump/piercing.png" type="Texture" id=14]
+
+[sub_resource type="DynamicFont" id=7]
+extra_spacing_char = 2
+font_data = ExtResource( 4 )
+
+[node name="store" type="Control" groups=["persist"]]
+pause_mode = 2
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 6 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+margin_right = 640.0
+margin_bottom = 360.0
+rect_pivot_offset = Vector2( 288, 200 )
+color = Color( 0.552941, 0.713726, 0.913725, 1 )
+
+[node name="Header" type="Label" parent="."]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -80.0
+margin_right = -48.0
+margin_bottom = 12.0
+rect_scale = Vector2( 5, 5 )
+custom_fonts/font = SubResource( 7 )
+text = "Shop"
+align = 1
+valign = 1
+
+[node name="Coins" type="Label" parent="."]
+anchor_left = 0.05
+anchor_top = 0.1
+anchor_right = 0.05
+anchor_bottom = 0.1
+margin_top = 12.0
+margin_right = 95.0
+margin_bottom = 28.0
+rect_scale = Vector2( 2, 2 )
+custom_fonts/font = ExtResource( 1 )
+text = "Coins: 123"
+align = 1
+valign = 1
+
+[node name="TabContainer" type="TabContainer" parent="."]
+anchor_top = 0.2
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource( 3 )
+
+[node name="Abilities" type="Tabs" parent="TabContainer" groups=["persist"]]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 36.0
+margin_right = -10.0
+margin_bottom = -10.0
+script = ExtResource( 5 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Abilities"]
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+
+[node name="control" type="Node2D" parent="TabContainer/Abilities/RichTextLabel"]
+
+[node name="Panel1" parent="TabContainer/Abilities/RichTextLabel/control" instance=ExtResource( 7 )]
+margin_left = 38.8
+margin_right = 182.8
+basePrice = 0
+maxLevel = 10
+levelUpIncrease = 4
+
+[node name="TextureRect2" parent="TabContainer/Abilities/RichTextLabel/control/Panel1" index="1"]
+texture = ExtResource( 9 )
+
+[node name="Panel2" parent="TabContainer/Abilities/RichTextLabel/control" instance=ExtResource( 7 )]
+margin_left = 231.8
+margin_right = 375.8
+basePrice = 100
+maxLevel = 15
+levelUpIncrease = 10
+
+[node name="TextureRect2" parent="TabContainer/Abilities/RichTextLabel/control/Panel2" index="1"]
+margin_top = 66.02
+margin_bottom = 114.02
+texture = ExtResource( 10 )
+
+[node name="Panel3" parent="TabContainer/Abilities/RichTextLabel/control" instance=ExtResource( 7 )]
+margin_left = 423.8
+margin_top = 7.58
+margin_right = 567.8
+margin_bottom = 211.58
+basePrice = 50
+maxLevel = 15
+levelUpIncrease = 10
+
+[node name="TextureRect2" parent="TabContainer/Abilities/RichTextLabel/control/Panel3" index="1"]
+texture = ExtResource( 11 )
+
+[node name="HScrollBar" type="HScrollBar" parent="TabContainer/Abilities"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+max_value = 500.0
+page = 30.0
+
+[node name="Stats" type="Tabs" parent="TabContainer" groups=["persist"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 36.0
+margin_right = -10.0
+margin_bottom = -10.0
+script = ExtResource( 5 )
+selected = -1
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Stats"]
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+margin_top = -0.0200059
+margin_bottom = -0.0200043
+
+[node name="control" type="Node2D" parent="TabContainer/Stats/RichTextLabel"]
+
+[node name="Panel1" parent="TabContainer/Stats/RichTextLabel/control" instance=ExtResource( 7 )]
+margin_left = 39.8
+margin_top = 5.60001
+margin_right = 183.8
+margin_bottom = 209.6
+maxLevel = 99999
+selectable = false
+
+[node name="TextureRect2" parent="TabContainer/Stats/RichTextLabel/control/Panel1" index="1"]
+texture = ExtResource( 2 )
+
+[node name="Panel2" parent="TabContainer/Stats/RichTextLabel/control" instance=ExtResource( 7 )]
+margin_left = 231.8
+margin_top = 5.60001
+margin_right = 375.8
+margin_bottom = 209.6
+maxLevel = 15
+selectable = false
+
+[node name="TextureRect2" parent="TabContainer/Stats/RichTextLabel/control/Panel2" index="1"]
+texture = ExtResource( 8 )
+
+[node name="HScrollBar" type="HScrollBar" parent="TabContainer/Stats"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+max_value = 500.0
+page = 30.0
+
+[node name="Weapon" type="Tabs" parent="TabContainer" groups=["persist"]]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 10.0
+margin_top = 36.0
+margin_right = -10.0
+margin_bottom = -10.0
+script = ExtResource( 12 )
+
+[node name="RichTextLabel" type="RichTextLabel" parent="TabContainer/Weapon"]
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+margin_top = -0.0200059
+margin_bottom = -0.0200043
+
+[node name="control" type="Node2D" parent="TabContainer/Weapon/RichTextLabel"]
+
+[node name="Panel1" parent="TabContainer/Weapon/RichTextLabel/control" instance=ExtResource( 7 )]
+margin_left = 39.8
+margin_top = 5.60001
+margin_right = 183.8
+margin_bottom = 209.6
+basePrice = 50
+maxLevel = 999
+levelUpIncrease = 50
+selectable = false
+exponential = 1.1
+
+[node name="Panel2" parent="TabContainer/Weapon/RichTextLabel/control" instance=ExtResource( 7 )]
+margin_left = 231.8
+margin_top = 5.60001
+margin_right = 375.8
+margin_bottom = 209.6
+basePrice = 100
+maxLevel = 15
+levelUpIncrease = 1000
+selectable = false
+
+[node name="TextureRect2" parent="TabContainer/Weapon/RichTextLabel/control/Panel2" index="1"]
+texture = ExtResource( 13 )
+
+[node name="Panel3" parent="TabContainer/Weapon/RichTextLabel/control" instance=ExtResource( 7 )]
+margin_left = 415.8
+margin_top = 5.60001
+margin_right = 559.8
+margin_bottom = 209.6
+basePrice = 500
+levelUpIncrease = 50
+selectable = false
+
+[node name="TextureRect2" parent="TabContainer/Weapon/RichTextLabel/control/Panel3" index="1"]
+texture = ExtResource( 14 )
+
+[node name="HScrollBar" type="HScrollBar" parent="TabContainer/Weapon"]
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -15.0
+max_value = 500.0
+page = 30.0
+
+[editable path="TabContainer/Abilities/RichTextLabel/control/Panel1"]
+[editable path="TabContainer/Abilities/RichTextLabel/control/Panel2"]
+[editable path="TabContainer/Abilities/RichTextLabel/control/Panel3"]
+[editable path="TabContainer/Stats/RichTextLabel/control/Panel1"]
+[editable path="TabContainer/Stats/RichTextLabel/control/Panel2"]
+[editable path="TabContainer/Weapon/RichTextLabel/control/Panel2"]
+[editable path="TabContainer/Weapon/RichTextLabel/control/Panel3"]

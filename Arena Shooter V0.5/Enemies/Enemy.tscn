@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Overlap/Hurtbox.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Overlap/DetectionZone.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Overlap/Hitbox.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Effects/flash.gdshader" type="Shader" id=4]
+[ext_resource path="res://Overlap/SoftCollision.tscn" type="PackedScene" id=5]
+[ext_resource path="res://Stats.tscn" type="PackedScene" id=6]
+[ext_resource path="res://Enemies/WanderController.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Enemies/Enemy.gd" type="Script" id=9]
+
+[sub_resource type="ShaderMaterial" id=1]
+shader = ExtResource( 4 )
+
+[node name="Enemy" type="KinematicBody2D" groups=["Enemies"]]
+collision_layer = 8
+script = ExtResource( 9 )
+
+[node name="Hitbox2" parent="." instance=ExtResource( 3 )]
+collision_mask = 2
+base_damage = 0
+knockback = 0.0
+fromPlayer = false
+
+[node name="Sprite" type="Sprite" parent="."]
+modulate = Color( 1.25, 1.25, 1.25, 1 )
+material = SubResource( 1 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="DetectionZone" parent="." instance=ExtResource( 2 )]
+collision_mask = 2
+
+[node name="Hitbox" parent="." instance=ExtResource( 3 )]
+collision_mask = 4
+
+[node name="Hurtbox" parent="." instance=ExtResource( 1 )]
+collision_layer = 16
+
+[node name="SoftCollision" parent="." instance=ExtResource( 5 )]
+
+[node name="WanderController" parent="." instance=ExtResource( 7 )]
+
+[node name="Stats" parent="." instance=ExtResource( 6 )]
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[connection signal="body_entered" from="Hitbox2" to="." method="_on_Hitbox2_body_entered"]
+[connection signal="area_entered" from="Hurtbox" to="." method="_on_Hurtbox_area_entered"]
+[connection signal="no_health" from="Stats" to="." method="_on_Stats_no_health"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_NavigationAgent2D_velocity_computed"]
+
+[editable path="Hitbox2"]
