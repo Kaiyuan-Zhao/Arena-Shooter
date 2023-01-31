@@ -13,5 +13,5 @@ Enemies have four visual indicators of stats: they have an outer ring that repre
 - ESC to pause game
 - SHIFT to use power
 
-
-						
+Video of the gameplay:
+https://youtu.be/t3tRxPB4bs4
