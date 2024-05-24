@@ -13,8 +13,8 @@ Enemies have four visual indicators of stats: they have an outer ring that repre
 - ESC to pause game
 - SHIFT to use power
 
-Short Montage:
+Short Montage of Gameplay:
 https://youtu.be/rqpruSasm8Q
 
-Longer Ver of Montage:
+Longer Version of Montage:
 https://youtu.be/t3tRxPB4bs4
